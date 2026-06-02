@@ -1,0 +1,42 @@
+<div class="dashboard-container">
+  <h2>Dashboard de Tickets</h2>
+  
+  <table class="ticket-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Estado</th>
+        <th>Fecha de Creación</th>
+        <th>Acciones</th> </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>#{{ ticket.id }}</td>
+        <td>
+          <strong>{{ ticket.title }}</strong>
+          <p class="desc">{{ ticket.description }}</p>
+        </td>
+        <td>
+          <span class="badge" [ngClass]="ticket.status === 'OPEN' ? 'badge-open' : 'badge-progress'">
+            {{ ticket.status }}
+          </span>
+        </td>
+        <td>{{ ticket.createdAt | date:'short' }}</td>
+        
+        <td>
+          <button 
+            *ngIf="ticket.status === 'OPEN'" 
+            (click)="resolve(ticket.id!)" 
+            class="btn-resolve">
+            Marcar como Resuelto
+          </button>
+        </td>
+      </tr>
+      
+      <tr *ngIf="tickets.length === 0">
+        <td colspan="5" class="empty-message">No hay tickets registrados aún.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
