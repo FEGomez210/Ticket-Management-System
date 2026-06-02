@@ -42,4 +42,15 @@ export class TicketListComponent implements OnInit {
       error: (err: any) => console.error('Error al resolver', err)
     });
   }
+ 
+  viewDetail(id: number): void {
+    this.ticketService.getTicketById(id).subscribe({
+      next: (ticket) => {
+        alert(`DETALLE DEL TICKET #${ticket.id}\n\nTítulo: ${ticket.title}\nDescripción: ${ticket.description}\nEstado: ${ticket.status}`);
+      },
+      error: (err) => {
+        console.error('Error al obtener el detalle:', err);
+      }
+    });
+  }
 }
