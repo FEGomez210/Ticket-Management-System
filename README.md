@@ -42,6 +42,8 @@ Start the application:
 
 Bash
 ng serve
+
+
 🚀 Key Features
 Centralized Data: Professional CRUD operations for ticket lifecycle management.
 

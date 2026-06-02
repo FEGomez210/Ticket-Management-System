@@ -29,7 +29,13 @@
             *ngIf="ticket.status === 'OPEN'" 
             (click)="resolve(ticket.id!)" 
             class="btn-resolve">
-            Marcar como Resuelto
+            OPEN
+          </button>
+        </td>
+        <td>
+
+          <button (click)="viewDetail(ticket.id!)" class="btn-detail">
+          Advanced...
           </button>
         </td>
       </tr>
@@ -39,4 +45,5 @@
       </tr>
     </tbody>
   </table>
-</div>
+  </div>
+<td>

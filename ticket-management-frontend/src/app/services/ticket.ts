@@ -20,6 +20,10 @@ export class TicketService {
     return this.http.get<Ticket[]>(this.apiUrl);
   }
 
+  getTicketById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  } 
+
   createTicket(ticket: Omit<Ticket, 'id' | 'createdAt'>): Observable<Ticket> {
     return this.http.post<Ticket>(this.apiUrl, ticket).pipe(
       tap(() => this.ticketCreado.next())
